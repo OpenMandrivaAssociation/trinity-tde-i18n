@@ -1,5 +1,17 @@
 %bcond clang 1
 
+# exclude these requires from the generated packages
+# as these locales cause install test failures
+%global __requires_exclude locales-zh_TW
+%global __requires_exclude locales-sr-Latn
+%global __requires_exclude locales-pt_BR
+%global __requires_exclude locales-zh_CN
+%global __requires_exclude locales-en_GB
+%global __requires_exclude locales-uz-Cyrl
+%global __requires_exclude locales-es_AR
+%global __requires_exclude locales-csb
+%global __requires_exclude locales-ven
+
 # TDE variables
 %define tde_epoch 2
 %if "%{?tde_version}" == ""
@@ -31,7 +43,7 @@ Source1:	trinity_lang.macro
 # NOTE This load's the template macro definitions
 # NOTE which includes the _trinity_lang_template* macros use in this spec file
 # NOTE do not delete this line, else everything using these defines will break.
-%{load %{S:1}}
+%{load:%{S:1}}
 
 BuildSystem:    cmake
 BuildOption:    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -147,9 +159,6 @@ This package contains %{summary}.
 %_trinity_lang_template zh_TW Chinese-Big5
 
 ##########
-
-%prep
-%autosetup -n %{tde_pkg}-trinity-%{version} -p1
 %conf -p
 unset QTDIR QTINC QTLIB
 export PATH="%{tde_prefix}/bin:${PATH}"
