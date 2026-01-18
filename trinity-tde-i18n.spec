@@ -31,6 +31,7 @@ BuildArch:      noarch
 %define __spec_install_post %{nil}
 AutoReq: no
 Source0:        https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{tde_version}/main/core/%{tarball_name}-%{tde_version}%{?preversion:~%{preversion}}.tar.xz
+Source1:        trinity_lang.macro
 
 BuildSystem:    cmake
 BuildOption:    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
