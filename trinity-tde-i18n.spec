@@ -1,8 +1,4 @@
 %bcond clang 1
-# NOTE This load's the template macro definitions
-# NOTE which includes the %%_trinity_lang_template* macros use in this spec file
-# NOTE do not delete this line, else everything using these defines will break.
-%load trinity_lang.macro
 
 # TDE variables
 %define tde_epoch 2
@@ -31,7 +27,11 @@ BuildArch:      noarch
 %define __spec_install_post %{nil}
 AutoReq: no
 Source0:        https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{tde_version}/main/core/%{tarball_name}-%{tde_version}%{?preversion:~%{preversion}}.tar.xz
-Source1:        trinity_lang.macro
+Source1:	trinity_lang.macro
+# NOTE This load's the template macro definitions
+# NOTE which includes the _trinity_lang_template* macros use in this spec file
+# NOTE do not delete this line, else everything using these defines will break.
+%{load %{S:1}}
 
 BuildSystem:    cmake
 BuildOption:    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
@@ -150,7 +150,6 @@ This package contains %{summary}.
 
 %prep
 %autosetup -n %{tde_pkg}-trinity-%{version} -p1
-
 %conf -p
 unset QTDIR QTINC QTLIB
 export PATH="%{tde_prefix}/bin:${PATH}"
