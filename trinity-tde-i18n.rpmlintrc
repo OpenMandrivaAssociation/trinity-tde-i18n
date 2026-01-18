@@ -1,0 +1,10 @@
+# trinity is installed into /opt/trinity this is a false positive
+addFilter("E: dir-or-file-in-opt")
+# yes, doing this manually, because reasons
+addFilter("W: file-not-in-%lang")
+# yep, common false-positive caused by upsteam licenses
+addFilter("E: incorrect-fsf-address")
+# acceptable losses, this package creates sub package lang packages, duplicates are a given
+addFilter("W: files-duplicate")
+# fixed by Require'ing the default package the symlinks belong to
+addFilter("W: dangling-relative-symlink")
