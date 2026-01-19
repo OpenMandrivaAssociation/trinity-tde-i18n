@@ -1,32 +1,32 @@
 
 %_trinity_lang_template()\
 %package -n %{name}-%{1}\
-Summary:	%{2} language data for %{name}\
+Summary:	%{1} language data for %{name}\
 BuildArch:	noarch\
-Provides:	%{name} = %{version}-%{release}\
-Requires:	trinity-kdelibs >= %{tde_version}\
-Requires:	locales-%{1}\
+Provides:	%{name}-%{1} = %{version}-%{release}\
+Provides:	%{name}-%{2} = %{version}-%{release}\
+Requires:	trinity-desktop >= %{tde_version}\
 \
 %description -n %{name}-%{1}\
-%{2} language data for %{name}.\
+%{1} language data for %{name}.\
 %files -n %{name}-%{1}\
-%optional %{tde_prefix}/share/locale/%{1}\
-%optional %{tde_prefix}/share/doc/tde/HTML/%{1}/\
+%optional %{tde_prefix}/share/locale/%{2}\
+%optional %{tde_prefix}/share/doc/tde/HTML/%{2}/\
 %{nil}
 
 # this macro is to handle languages with non-iso path naming
 %_trinity_lang_template_alt()\
-%package -n %{name}-%{3}\
-Summary:	%{2} language data for %{name}\
+%package -n %{name}-%{1}\
+Summary:	%{1} language data for %{name}\
 BuildArch:	noarch\
-Provides:	%{name} = %{version}-%{release}\
-Requires:	trinity-kdelibs >= %{tde_version}\
-Requires:	locales-%{3}\
+Provides:	%{name}-%{1} = %{version}-%{release}\
+Provides:	%{name}-%{3} = %{version}-%{release}\
+Requires:	trinity-desktop >= %{tde_version}\
 \
-%description -n %{name}-%{3}\
-%{2} language data for %{name}.\
-%files -n %{name}-%{3}\
-%optional %{tde_prefix}/share/locale/%{1}\
-%optional %{tde_prefix}/share/doc/tde/HTML/%{1}/\
+%description -n %{name}-%{1}\
+%{1} language data for %{name}.\
+%files -n %{name}-%{1}\
+%optional %{tde_prefix}/share/locale/%{2}\
+%optional %{tde_prefix}/share/doc/tde/HTML/%{2}/\
 %{nil}
 

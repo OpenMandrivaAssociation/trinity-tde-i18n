@@ -51,7 +51,7 @@ Macedonian mk
 Mongolian mn
 Malay ms
 Maltese mt
-Norwegian-Bokmål nb
+Norwegian-Bokmal nb
 Low-Saxon nds
 Dutch nl
 Norwegian-Nynorsk nn
@@ -95,9 +95,9 @@ ABBR=$(echo $line | tr -s ' ' | cut -d " " -f2)
 ALT=$(echo $line | tr -s ' ' | cut -d " " -f3)
 
 if [[ -n $ALT ]]; then
-echo %_trinity_lang_template_alt $ABBR $LANG $ALT >> trinity_lang_template.in;
+echo %_trinity_lang_template_alt $LANG $ABBR $ALT >> trinity_lang_template.in;
 else
-echo %_trinity_lang_template $ABBR $LANG >> trinity_lang_template.in;
+echo %_trinity_lang_template $LANG $ABBR >> trinity_lang_template.in;
 fi
 sed -i '/^$/d' trinity_lang_template.in
 done <<< "$language"
